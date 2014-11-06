@@ -1,1 +1,49 @@
-<!doctype html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content="Angular Hackathon"><meta name=viewport content="width=device-width, initial-scale=1, minimal-ui"><title>Angular Hackathon</title><link rel=stylesheet href=styles/app.min.css></head><body ng-app=hackathon.pages.main.app><main ng-controller=MainCtrl><h1>Welcome!</h1><tree></tree></main><script src=scripts/main.min.js></script></body></html>
+<!doctype html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content="Angular Hackathon"><meta name=viewport content="width=device-width, initial-scale=1, minimal-ui"><title>Angular Hackathon</title><link rel=stylesheet href=styles/app.min.css><link rel=stylesheet href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700"></head><body ng-app=hackathon.pages.main.app><main ng-controller=MainCtrl><h1>Welcome!</h1><tree></tree><textarea id=my-searchbox></textarea></main><script src=scripts/main.min.js></script><script type=text/javascript>
+		$(document).ready(function(){
+
+			$("#my-searchbox").mention({
+				users: [{
+					name: 'Lindsay Made',
+					username: 'LindsayM',
+					image: 'http://placekitten.com/25/25'
+				}, {
+					name: 'Rob Dyrdek',
+					username: 'robdyrdek',
+					image: 'http://placekitten.com/25/24'
+				}, {
+					name: 'Rick Bahner',
+					username: 'RickyBahner',
+					image: 'http://placekitten.com/25/23'
+				}, {
+					name: 'Jacob Kelley',
+					username: 'jakiestfu',
+					image: 'http://placekitten.com/25/22'
+				}, {
+					name: 'John Doe',
+					username: 'HackMurphy',
+					image: 'http://placekitten.com/25/21'
+				}, {
+					name: 'Charlie Edmiston',
+					username: 'charlie',
+					image: 'http://placekitten.com/25/20'
+				}, {
+					name: 'Andrea Montoya',
+					username: 'andream',
+					image: 'http://placekitten.com/24/20'
+				}, {
+					name: 'Jenna Talbert',
+					username: 'calisunshine',
+					image: 'http://placekitten.com/23/20'
+				}, {
+					name: 'Street League',
+					username: 'streetleague',
+					image: 'http://placekitten.com/22/20'
+				}, {
+					name: 'Loud Mouth Burrito',
+					username: 'Loudmouthfoods',
+					image: 'http://placekitten.com/21/20'
+				}]
+			});
+
+		});
+	</script></body></html>

@@ -16,7 +16,14 @@ var reload = browserSync.reload;
 var venderScripts = [
   { 'angular': [ 'bower_components/angular/angular.min.js' ] },
   { 'jquery': [ 'bower_components/jquery/dist/jquery.min.js' ] },
-  { 'lodash': [ 'bower_components/lodash/dist/lodash.min.js' ] }
+  { 'lodash': [ 'bower_components/lodash/dist/lodash.min.js' ] },
+  { 'bootstrap': [ 'bower_components/bootstrap/dist/js/bootstrap.js' ] },
+  { 'bootstrap-typeahead': [ 'bower_components/mention/bootstrap-typeahead.js' ] },
+  { 'mention': [ 'bower_components/mention/mention.js' ] }
+];
+
+var venderStyles = [
+  { 'bootstrap': [ 'bower_components/bootstrap/dist/**/*.*', '!bower_components/bootstrap/dist/{js/**, .js}' ] }
 ];
 
 // Prepare vendor scripts.
@@ -29,6 +36,20 @@ gulp.task('scripts:vendor', function () {
 
     return gulp.src(scripts)
         .pipe($.concat(name + '.js'))
+        .pipe(gulp.dest(target));
+  });
+
+  return es.merge.apply(null, streams);
+});
+
+gulp.task('styles:vendor', function () {
+
+  var streams = _.map(venderStyles, function(vendor) {
+    var name = _.keys(vendor);
+    var styles = vendor[name];
+    var target = 'app/styles/lib/' + name;
+
+    return gulp.src(styles)
         .pipe(gulp.dest(target));
   });
 
@@ -102,7 +123,7 @@ gulp.task('styles:scss', function () {
 });
 
 // Output Final CSS Styles
-gulp.task('styles', ['styles:scss', 'styles:css']);
+gulp.task('styles', ['styles:scss', 'styles:css', 'styles:vendor']);
 
 // Scan Your HTML For Assets & Optimize Them
 gulp.task('html', [], function () {
@@ -140,7 +161,7 @@ gulp.task('build', ['clean'], function () {
 
 // Clean Output Directory
 gulp.task('clean', function (cb) {
-    return gulp.src(['dist/*', '!dist/{.git,.git/**,README.md}'])
+    return gulp.src(['dist/*', '!dist/{.git,.git/**,README.md}', 'app/scripts/lib/*', 'app/styles/lib/*'])
       .pipe($.clean());
 });
 
